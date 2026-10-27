@@ -27,10 +27,14 @@ Built with a high-performance **FastAPI (Python)** backend and an interactive **
 
 ## 🌐 Live & Local Access
 
-* **Live Public HTTPS URL (Cloudflare):** [https://ambien-reader-boom-dressing.trycloudflare.com](https://ambien-reader-boom-dressing.trycloudflare.com)
-* **Local Web Application:** [http://localhost:5173/](http://localhost:5173/) or [http://localhost:8000/](http://localhost:8000/)
+* **Active Live Public HTTPS URL (Cloudflare Tunnel):** [https://marcus-plc-affiliated-inspections.trycloudflare.com](https://marcus-plc-affiliated-inspections.trycloudflare.com)
+* **Local Web Application (Unified SPA & API):** [http://localhost:8000/](http://localhost:8000/) or [http://localhost:5173/](http://localhost:5173/)
 * **Backend REST API:** [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
 * **Interactive Swagger API Docs:** [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
+
+> **Note on Cloudflare Tunnels (Error 1033 Resolution):**  
+> Ephemeral Cloudflare quick tunnels require the local tunnel daemon (`cloudflared`) to be active. If you ever experience *Cloudflare Error 1033*, simply double-click `start_live_fleetops.bat` in the repository root to launch the FastAPI engine and expose a live public HTTPS link instantly.
+
 
 ---
 
@@ -109,6 +113,14 @@ Smart Fleet Management System/
 git clone https://github.com/uditdev0523/Smart-Fleet-Managment-and-Vehicle-Monitoring-System.git
 cd Smart-Fleet-Managment-and-Vehicle-Monitoring-System
 ```
+
+### ⚡ One-Click Automated Launch (Live Public Tunnel & Unified Web App)
+On Windows, you can launch the entire stack (FastAPI server + compiled React SPA + Cloudflare Public HTTPS Tunnel) with a single command or by double-clicking:
+```cmd
+start_live_fleetops.bat
+```
+This automatically boots the backend on port 8000, mounts the frontend, and exposes a live public `https://*.trycloudflare.com` URL.
+
 
 ### 2. Set Up and Run the Backend
 ```bash
