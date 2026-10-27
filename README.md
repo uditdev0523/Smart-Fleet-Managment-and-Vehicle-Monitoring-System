@@ -27,8 +27,8 @@ Built with a high-performance **FastAPI (Python)** backend and an interactive **
 
 ## 🌐 Live & Local Access
 
-* **Live Public HTTPS URL:** [https://04e0eb50a7842f.lhr.life](https://04e0eb50a7842f.lhr.life)
-* **Local Web Application:** [http://localhost:5173/](http://localhost:5173/)
+* **Live Public HTTPS URL (Cloudflare):** [https://ambien-reader-boom-dressing.trycloudflare.com](https://ambien-reader-boom-dressing.trycloudflare.com)
+* **Local Web Application:** [http://localhost:5173/](http://localhost:5173/) or [http://localhost:8000/](http://localhost:8000/)
 * **Backend REST API:** [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
 * **Interactive Swagger API Docs:** [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
 

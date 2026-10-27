@@ -5,7 +5,7 @@ FastAPI Backend Application Entry Point
 import os
 import sys
 from contextlib import asynccontextmanager
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
 # Ensure backend root is on sys.path
@@ -65,22 +65,44 @@ app.include_router(simulator_router)
 app.include_router(settings_router)
 
 
-@app.get("/")
-def root():
-    return {
-        "project": "FleetOps — Smart Fleet Management and Vehicle Monitoring System",
-        "academic_course": "Data Structures & Algorithms II (CCSE0301)",
-        "sdg": "SDG 9: Industry, Innovation & Infrastructure",
-        "author": "Udit Pratap Singh (Roll No. 2501330100392)",
-        "status": "OPERATIONAL",
-        "gps_status": "SIMULATED GPS DATA",
-        "docs_url": "/docs"
-    }
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 
+# Mount static frontend build
+dist_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "frontend", "dist"))
 
 @app.get("/health")
 def health():
     return {"status": "healthy", "service": "fleetops-backend"}
+
+if os.path.isdir(dist_dir):
+    assets_dir = os.path.join(dist_dir, "assets")
+    if os.path.isdir(assets_dir):
+        app.mount("/assets", StaticFiles(directory=assets_dir), name="assets")
+
+    @app.get("/{full_path:path}")
+    async def serve_spa(full_path: str):
+        # Ignore docs, openapi, and api requests
+        if full_path in ("docs", "redoc", "openapi.json") or full_path.startswith("api"):
+            raise HTTPException(status_code=404, detail="Endpoint not found")
+        file_path = os.path.join(dist_dir, full_path)
+        if full_path and os.path.isfile(file_path):
+            return FileResponse(file_path)
+        index_file = os.path.join(dist_dir, "index.html")
+        if os.path.isfile(index_file):
+            return FileResponse(index_file)
+        return {"error": "Frontend build not found"}
+else:
+    @app.get("/")
+    def root():
+        return {
+            "project": "FleetOps — Smart Fleet Management and Vehicle Monitoring System",
+            "academic_course": "Data Structures & Algorithms II (CCSE0301)",
+            "sdg": "SDG 9: Industry, Innovation & Infrastructure",
+            "author": "Udit Pratap Singh (Roll No. 2501330100392)",
+            "status": "OPERATIONAL",
+            "docs_url": "/docs"
+        }
 
 
 if __name__ == "__main__":
