@@ -31,6 +31,8 @@ const tabTitles: Record<NavItem, { title: string; subtitle: string }> = {
   settings: { title: 'Settings & Administration', subtitle: 'Audit trail, simulation controls, and demo database reset' },
 };
 
+import { api } from '../api';
+
 export const TopNavbar: React.FC<TopNavbarProps> = ({
   currentTab,
   onSelectTab,
@@ -40,6 +42,12 @@ export const TopNavbar: React.FC<TopNavbarProps> = ({
   onTriggerTick,
   isTicking,
 }) => {
+  const [isBackendLive, setIsBackendLive] = React.useState(false);
+
+  React.useEffect(() => {
+    return api.subscribeBackendStatus((live) => setIsBackendLive(live));
+  }, []);
+
   const meta = tabTitles[currentTab] || { title: 'FleetOps', subtitle: 'Logistics Operations' };
 
   return (
@@ -58,6 +66,15 @@ export const TopNavbar: React.FC<TopNavbarProps> = ({
 
       {/* Action Bar */}
       <div className="flex items-center gap-3">
+        {/* Service Connectivity Status */}
+        <div
+          className="hidden md:flex items-center gap-1.5 px-2.5 py-1 bg-ivory border border-warmgrey rounded-md text-[11px] font-semibold text-charcoal shadow-2xs"
+          title={isBackendLive ? "Connected to live FastAPI backend & SQLite" : "Running on 24/7 Universal Web Engine (All DSA & Telematics Active)"}
+        >
+          <span className={`w-2 h-2 rounded-full ${isBackendLive ? 'bg-operational-success animate-pulse' : 'bg-forest'}`} />
+          <span>{isBackendLive ? 'FastAPI Cloud API' : '24/7 Web Engine'}</span>
+        </div>
+
         {/* MANDATORY SIMULATED GPS DATA BADGE */}
         <div className="flex items-center gap-2 bg-ivory border border-warmgrey rounded-md px-2.5 py-1 text-xs">
           <div className="flex items-center gap-1.5">

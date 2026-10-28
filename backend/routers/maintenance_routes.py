@@ -172,7 +172,7 @@ def get_max_heap_priority_queue(
         db.query(MaintenanceAlert)
         .filter(
             MaintenanceAlert.organization_id == current_user.organization_id,
-            MaintenanceAlert.status == "open"
+            MaintenanceAlert.status.in_(["open", "acknowledged"])
         )
         .all()
     )

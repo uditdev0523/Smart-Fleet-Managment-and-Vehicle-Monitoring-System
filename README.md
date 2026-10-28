@@ -25,18 +25,21 @@ Built with a high-performance **FastAPI (Python)** backend and an interactive **
 
 ---
 
-## 🌐 Live & Local Access
+## 🌐 Live Access (Permanent 24/7 Cloud Hosting)
 
-* **Active Live Public HTTPS URL (Cloudflare Tunnel):** [https://marcus-plc-affiliated-inspections.trycloudflare.com](https://marcus-plc-affiliated-inspections.trycloudflare.com)
-* **Local Web Application (Unified SPA & API):** [http://localhost:8000/](http://localhost:8000/) or [http://localhost:5173/](http://localhost:5173/)
-* **Backend REST API:** [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
-* **Interactive Swagger API Docs:** [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
+* **🚀 Permanent 24/7 Live Web Application (GitHub Pages Global CDN):**  
+  👉 **[https://uditdev0523.github.io/Smart-Fleet-Managment-and-Vehicle-Monitoring-System/](https://uditdev0523.github.io/Smart-Fleet-Managment-and-Vehicle-Monitoring-System/)**  
+  *(Live 24 hours a day, 7 days a week, 365 days a year. Runs globally on GitHub's high-speed CDN without requiring your local PC to be on. Powered by the autonomous client-side DSA simulation engine).*
 
-> **⚠️ Quick Tunnel vs Permanent 24/7 Cloud Hosting:**  
-> * **Current Quick Tunnel (Active):** Accessible as long as your local machine is running. If your PC shuts down, sleeps, or disconnects, double-click `start_live_fleetops.bat` to instantly restore local serving and tunnel access.
-> * **Permanent 24/7 Cloud Hosting (Always Online):** The repository is pre-configured with a production multi-stage [`Dockerfile`](./Dockerfile) and [`render.yaml`](./render.yaml). You can link this GitHub repository to **[Render.com](https://render.com)** or **Railway** (free tier) to get a permanent `https://<your-app>.onrender.com` URL that runs 24/7 forever in the cloud without needing your personal computer to stay on.
+* **☁️ Containerized Full-Stack Cloud Host (Render / Railway):**  
+  The repository includes a production multi-stage [`Dockerfile`](./Dockerfile) and [`render.yaml`](./render.yaml). Link this GitHub repository on [Render.com](https://render.com) (Web Service → Environment: Docker) to get a 24/7 container running FastAPI + SQLite + React at `https://smart-fleet-management.onrender.com`.
 
+* **▲ 1-Click Vercel Deployment:**  
+  Configured via [`vercel.json`](./vercel.json) for instant edge deployment.
 
+* **💻 Local Unified Development App:** [http://localhost:8000/](http://localhost:8000/) or [http://localhost:5173/](http://localhost:5173/)  
+* **📖 Interactive Backend Swagger API Docs:** [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)  
+* **⚡ 1-Click Local + Live Cloudflare Tunnel:** Double-click [`start_live_fleetops.bat`](./start_live_fleetops.bat) to launch the backend and a live HTTPS quick tunnel concurrently.
 
 ---
 
